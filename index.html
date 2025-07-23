@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Currency Converter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div class="background-anim"></div>
+
+  <nav>
+    <div class="nav-branding">
+      <div class="logo">EasyCon</div>
+      <div class="subtitle">Advanced Currency Converter</div>
+    </div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#faqs">FAQs</a></li>
+      <li><a href="#help">Help</a></li>
+    </ul>
+    <button id="night-mode-toggle" class="night-toggle-btn" aria-label="Toggle Night Mode" title="Toggle Night Mode">
+      <span id="night-mode-icon" aria-hidden="true">
+        <!-- SVG will be injected by JS -->
+      </span>
+    </button>
+  </nav>
+
+  <div class="container" id="home">
+    <h1>Currency Converter</h1>
+    <div class="main-subtitle">Convert between 150+ currencies and cryptocurrencies</div>
+    <form>
+      <label for="quantity">Amount:</label>
+      <input type="number" name="quantity" min="1" placeholder="Enter amount" required>
+
+      <label for="currency">Base Currency:</label>
+      <select name="currency">
+        <option value="INR">Indian Rupee (INR)</option>
+        <option value="USD">US Dollar (USD)</option>
+        <option value="EUR">Euro (EUR)</option>
+      </select>
+
+      <button id="convert-btn" class="btn" type="submit">Convert</button>
+    </form>
+
+    <div class="output">
+  <h2>Converted Values</h2>
+  <input type="text" id="filterInput" placeholder="Filter currencies..." class="filter-input"/>
+      <h2>Converted Values</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Currency</th>
+            <th>Code</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <section id="rate-alerts-section" class="info-section">
+    <h2>🔔 Rate Alerts</h2>
+    <p class="rate-alert-desc">Get notified when currencies reach your target rates</p>
+    <div class="rate-alert-center">
+      <form id="alert-form">
+        <div class="rate-alert-row">
+          <div class="rate-alert-col">
+            <label for="from-currency">From Currency</label>
+            <select id="from-currency" required>
+              <option value="INR">Indian Rupee (INR)</option>
+              <option value="USD">US Dollar (USD)</option>
+              <option value="EUR">Euro (EUR)</option>
+            </select>
+          </div>
+          <button id="swap-currencies" type="button" class="swap-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="11" stroke="#a0a7b8" stroke-width="2" fill="none"/>
+              <path d="M8 12h8m0 0l-3-3m3 3l-3 3" stroke="#a0a7b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="rate-alert-col">
+            <label for="to-currency">To Currency</label>
+            <select id="to-currency" required>
+              <option value="INR">Indian Rupee (INR)</option>
+              <option value="USD">US Dollar (USD)</option>
+              <option value="EUR">Euro (EUR)</option>
+            </select>
+          </div>
+        </div>
+        <div class="rate-alert-row" style="margin-top:1.2rem;">
+          <div class="rate-alert-col">
+            <label for="target-rate">Target Rate</label>
+            <input type="number" id="target-rate" min="0.0001" step="0.0001" placeholder="e.g. 82.5" required />
+          </div>
+          <div class="rate-alert-col">
+            <label for="alert-when">Alert When</label>
+            <select id="alert-when" required>
+              <option value="below">Rate goes below</option>
+              <option value="above">Rate goes above</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn rate-alert-btn">+ Create Alert</button>
+      </form>
+    </div>
+    <div id="alert-list" style="margin-top:2.5rem;"></div>
+  </section>
+
+  <section id="about" class="info-section">
+    <h2>About Us</h2>
+    <p>EasyCon is a powerful yet lightweight currency conversion tool built to simplify the way people interact with global currencies. Whether you're planning an international vacation, purchasing products from overseas, or working with clients and teams across different countries, EasyCon is your go-to solution for quick, accurate, and real-time currency conversions.
+
+      At the heart of EasyCon is its integration with CurrencyAPI, a trusted and reliable source for up-to-date exchange rate data. This ensures that every conversion you perform reflects the latest market values, helping you make financial decisions with confidence—no guessing, no outdated numbers.
+      
+      The platform is crafted with a strong emphasis on usability and performance. It features a clean, distraction-free interface that minimizes visual clutter and maximizes clarity. Designed with responsive web design principles, EasyCon adapts perfectly to desktops, tablets, and smartphones, offering a consistent and intuitive user experience across all devices.
+      
+      There’s no need for user accounts, downloads, or multi-step processes. Everything happens right in your browser, instantly and efficiently.
+      
+      Whether you're a student researching international economics, a traveler budgeting for a trip, a freelancer billing clients in different currencies, or a business owner comparing global prices—EasyCon is built for you. It combines accuracy, simplicity, and accessibility, making it one of the most practical tools for everyday financial interactions in a globalized world.</p>
+  </section>
+
+  <section id="faqs" class="info-section">
+    <h2>FAQs</h2>
+    <ul>
+      <li><strong>Q:</strong> Can I convert between any two currencies?<br><strong>A:</strong> Yes, select your base currency (INR, USD, EUR), and the tool will display converted values for all other supported currencies.</li>
+<li><strong>Q:</strong> Is an internet connection required?<br><strong>A:</strong> Yes, a live connection is needed to fetch the latest exchange rates from the CurrencyAPI.</li>
+<li><strong>Q:</strong> How do I filter the results?<br><strong>A:</strong> Use the “Filter currencies...” input to search by currency name or code (e.g., USD, Euro).</li>
+<li><strong>Q:</strong> Is my personal data collected?<br><strong>A:</strong> No, the site does not collect, store, or track any user data.</li>
+<li><strong>Q:</strong> Will more currencies or features be added?<br><strong>A:</strong> Yes! Future updates may include cryptocurrency support, historical rate graphs, and dark mode.</li>
+<li><strong>Q:</strong> Can I convert from crypto to fiat currencies?<br><strong>A:</strong> Not at the moment. Support for cryptocurrencies is planned for future updates.</li>
+<li><strong>Q:</strong> How often are the rates updated?<br><strong>A:</strong> The rates are fetched live from CurrencyAPI, ensuring they're current at the time of use.</li>
+<li><strong>Q:</strong> Is the converter mobile-friendly?<br><strong>A:</strong> Yes, the website is fully responsive and works well on phones, tablets, and desktops.</li>
+<li><strong>Q:</strong> Do I need to sign in or create an account?<br><strong>A:</strong> No login or signup is required. The tool is open-access and simple to use.</li>
+<li><strong>Q:</strong> What happens if the API fails or doesn’t respond?<br><strong>A:</strong> The app displays an alert message if it can't fetch data, ensuring users are informed instantly.</li>
+
+    </ul>
+  </section>
+
+  <section id="help" class="info-section">
+    <h2 style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-size:2rem;">
+      <span style="font-size:2.2rem;line-height:1;">💡</span> Help & Support
+    </h2>
+    <div style="max-width:480px;margin:2.5rem auto 0 auto;background:rgba(255,255,255,0.85);box-shadow:0 4px 24px #eebc4a22;padding:2rem 2.2rem;border-radius:1.2rem;text-align:center;">
+      <p style="font-size:1.13rem;color:#232946;margin-bottom:1.2rem;">Need assistance or have a question? We're here to help you get the most out of <b>EasyCon</b>!</p>
+      <div style="margin:1.2rem 0 1.7rem 0;">
+        <span style="display:inline-block;background:#f4d160;color:#232946;padding:0.7rem 1.3rem;border-radius:2rem;font-weight:600;font-size:1.08rem;box-shadow:0 2px 8px #eebc4a22;">
+          <a href="mailto:easycon236@gmail.com" style="color:#232946;text-decoration:none;">easycon236@gmail.com</a>
+        </span>
+      </div>
+      <p style="color:#888;font-size:1rem;">We respond within 24 hours.<br>For urgent issues, please mention <b>URGENT</b> in your email subject.</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 EasyCon All rights reserved.
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
